@@ -32,10 +32,9 @@ The University Hostel Healthcare Website is designed to provide comprehensive he
 ### 💻 Technologies Used
 
 - **Frontend**: HTML, CSS, JavaScript
-- **Backend**: Node.js, Express.js ,google api
-- **Database**: xampp,mysql
+- **Backend**: Node.js, Express.js, Google API
+- **Database**: XAMPP, MySQL
 - **Version Control**: Git
-
 
 ### ⚙️ Installation
 
@@ -55,6 +54,11 @@ npm install
 Set up environment variables:
 Create a .env file in the root directory and add the following:
 
+bash
+Copy code
+MONGODB_URI=your-mongodb-uri
+PORT=3000
+Run the application:
 
 bash
 Copy code
@@ -98,8 +102,7 @@ For any questions or suggestions, please contact:
 📧 Email: support@hostelhealthcare.com
 🐙 GitHub: vighneshb04
 
+sql
+Copy code
 
-
-
-
-
+You can copy and paste this directly into your `README.md` file. Let me know if you need any more help!
