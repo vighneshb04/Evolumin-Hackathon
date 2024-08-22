@@ -36,42 +36,59 @@ The University Hostel Healthcare Website is designed to provide comprehensive he
 - **Database**: XAMPP, MySQL
 - **Version Control**: Git
 
-### ⚙️ Installation
+## Installation
 
 1. **Clone the repository:**
    ```bash
    git clone https://github.com/vighneshb04/Evolumin-Hackathon.git
-Navigate to the project directory:
 
-1. **Navigate to the project directory:**
-   ```bash
+2. **Navigate to the project directory:**
+   ```bash 
    cd Evolumin-Hackathon
 
+3. **Install dependencies:**
+    ```bash
+    npm install
 
-🚀 Usage
-🔐 Admin Panel: Admins can log in to manage website content, including updates on healthcare services, isolation alerts, and patient information.
-🖥️ User Interaction: Hostel residents and healthcare staff can browse the website to access emergency services, track ambulances, view alerts, and manage prescriptions.
-🤝 Contributing
+ 4 Set up environment variables:
+    Create a .env file in the root directory and add the following:
+
+      DB_HOST=localhost
+      DB_USER=root
+      DB_PASSWORD=yroot
+      DB_NAME=evolumin
+      PORT=3000
+
+  5. **Run the application:**
+     ```bash
+       npm start
+  Access the website:
+  Open your browser and go to http://localhost:3000
+
+   ## Usage
+
+
+🔐 Admin Panel: Admins can log in to manage website content, such as updating news, events, and faculty profiles.
+🖥️ User Interaction: Students and parents can browse the website to get information, view the gallery, and contact the school.
+
+## Contributing
 We welcome contributions from the community! To contribute, please follow these steps:
 
-Fork the repository.
-
+Fork the repository
 Create a new branch:
+    
+    ```bash
+    git checkout -b feature/your-feature-name
 
-bash
-Copy code
-git checkout -b feature/your-feature-name
 Make your changes and commit them:
-
-bash
-Copy code
-git commit -m "Add your message"
+    
+    ```bash
+    git commit -m "Add your message"
 Push to the branch:
 
-bash
-Copy code
-git push origin feature/your-feature-name
-Create a pull request.
+    ```bash
+    git push origin feature/your-feature-name
+Create a pull request
 
 Please ensure your code follows our coding standards and includes appropriate tests.
 
@@ -84,7 +101,6 @@ For any questions or suggestions, please contact:
 📧 Email: support@hostelhealthcare.com
 🐙 GitHub: vighneshb04
 
-sql
-Copy code
 
-You can copy and paste this directly into your `README.md` file. Let me know if you need any more help!
+
+   
