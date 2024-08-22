@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <title>Real-Time Monitoring of Implantable Devices</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0f172a;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+            background-attachment: fixed;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 20px;
+            background-image: linear-gradient(to right, #ec4899, #8b5cf6);
+            color: transparent;
+            background-clip: text;
+            -webkit-background-clip: text;
+        }
+
+        .app {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 90%;
+            max-width: 700px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            margin-bottom: 20px;
+        }
+
+        .inputs {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .inputs > div {
+            flex: 1;
+            min-width: 150px;
+        }
+
+        label {
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            font-size: large;
+            background-color: #262626;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        input:focus-visible {
+            outline: 2px solid #ec4899;
+        }
+
+        button {
+            cursor: pointer;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            color: white;
+            font-weight: bold;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        #submit {
+            width: 100%;
+            background-image: linear-gradient(to right, #ec4899, #8b5cf6);
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        #editSection {
+            width: 100%;
+            display: flex;
+            gap: 15px;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        #updateEntry {
+            flex: 1;
+            background-image: linear-gradient(to right, #ec4899, #8b5cf6);
+        }
+
+        #cancelEdit {
+            flex: 1;
+            background-color: #ef4444;
+        }
+
+        #submit:hover, #updateEntry:hover, #cancelEdit:hover {
+            transform: scale(1.05);
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            text-align: center;
+            padding: 10px;
+            border: 1px solid #333;
+        }
+
+        th {
+            background-color: #0a0a0a;
+        }
+
+        tr:nth-child(even) {
+            background-color: #57534e;
+        }
+
+        tr:nth-child(odd) {
+            background-color: #262626;
+        }
+
+        tbody > tr:hover {
+            background-color: #737373;
+            color: black;
+        }
+
+        .delete-animation {
+            background-color: #ef4444 !important;
+            animation: deleteAnimate 0.4s linear forwards;
+        }
+
+        @keyframes deleteAnimate {
+            to {
+                transform: translateX(100%);
+            }
+        }
+
+        .device-container {
+            width: 100%;
+            margin-bottom: 20px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .heart-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .heart {
+            width: 80px;
+            height: 80px;
+            background-color: red;
+            transform: rotate(-45deg);
+            position: relative;
+            animation: heartbeat 1s infinite;
+        }
+        .edit{
+            color: #0a0a0a;
+        }
+
+        .heart::before, .heart::after {
+            content: "";
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: red;
+            position: absolute;
+        }
+
+        .heart::before {
+            top: -40px;
+            left: 0;
+        }
+
+        .heart::after {
+            top: 0;
+            left: 40px;
+        }
+
+        @keyframes heartbeat {
+            0%, 50%, 100% {
+                transform: scale(1) rotate(-45deg);
+            }
+            25% {
+                transform: scale(1.1) rotate(-45deg);
+            }
+        }
+
+        .device-data {
+            font-size: 1.2rem;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .graph-container {
+            width: 100%;
+            height: 150px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .graph .line {
+            position: absolute;
+            bottom: 0;
+            width: 0;
+            height: 100%;
+            border-right: 2px solid #00f1a1;
+            animation: draw 2s linear infinite;
+        }
+
+        @keyframes draw {
+            0% {
+                width: 0;
+            }
+            100% {
+                width: 100%;
+            }
+        }
+
+        .accessible {
+            margin-top: 20px;
+            font-size: 1rem;
+            text-align: center;
+            max-width: 800px;
+            color: #eee;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .app {
+                width: 95%;
+            }
+
+            .inputs > div {
+                flex: 1 1 100%;
+            }
+
+            button {
+                font-size: 1rem;
+            }
+
+            .device-data {
+                font-size: 1rem;
+            }
+        }
+        h3 {
+            background-image: linear-gradient(to right, #ec4899, #8b5cf6);
+        }
+        
+        h1,
+        h3 {
+            color: transparent;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .app {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 650px;
+            margin: 1rem auto;
+            padding: 10px;
+            gap: 20px;
+        }
+        
+        .inputs {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            height: fit-content;
+        }
+        
+        .inputs>div {
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+        }
+        
+        label {
+            font-size: 0.9rem;
+        }
+        
+        input,
+        label {
+            display: block;
+        }
+        
+        input {
+            margin-top: 8px;
+            margin-bottom: 5px;
+            padding: 10px;
+            font-size: large;
+            background-color: #262626;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            width: 100%;
+        }
+        
+        input:focus-visible {
+            outline: 2px solid #ec4899;
+        }
+        
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        
+        button{ display: block; cursor: pointer; border: none; }
+        
+        #submit {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            background-image: linear-gradient(to right, #ec4899, #8b5cf6);
+            font-size: 1.3rem;
+            border-radius: 5px;
+            color: white;
+            font-weight: bold;
+            transition: scale 0.3s ease-in-out;
+        }
+        
+        #editSection{
+            width: 100%;
+            display: flex;
+            gap: 25px;
+            justify-content: space-between;
+        }
+        
+        #editSection > button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+            border-radius: 5px;
+            color: white;
+            font-weight: bold;
+            transition: scale 0.3s ease-in-out;
+        }
+        
+        #updateEntry { background-image: 
+             linear-gradient(to right, #ec4899, #8b5cf6); }
+        
+        #cancelEdit{ background-color: #ef4444; }
+        
+        #submit:hover, #updateEntry:hover, #cancelEdit:hover { scale: 1.02; }
+        
+        .hidden{ display: none !important; }
+        
+        .edit, .delete{
+            margin: 0 auto;
+            padding: 5px 10px;
+            font-size: 1rem;
+            border-radius: 5px;
+            background-color: transparent;
+            color: white;
+            border: 1px solid white;
+            display: flex;  
+            justify-content: center;
+            align-items: center;
+            width: 35px;  
+            height: 35px;
+           
+        }
+        
+        .edit:hover, .delete:hover{
+            background-color: #0a0a0a;
+        }
+        
+        .edit i, .delete i {
+        margin: 0;  
+        padding: 0;
+        font-size: 1rem;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            position: relative;
+            overflow: hidden;
+            table-layout:auto;
+        }
+        
+        th,
+        td {
+            text-align: center;
+            padding: 10px;
+           word-break:break-word;
+        }
+        tr:nth-child(even) {
+            background-color: #57534e;
+        }
+        
+        tr:nth-child(odd) {
+            background-color: #262626;
+        }
+        
+        th {
+            font-size: 0.7rem;
+            background-color: #0a0a0a;
+            text-align:center;
+            word-wrap:break-word;
+        }
+        
+        tbody > tr:hover{
+            background-color: #737373;
+            color: black;
+        }
+        
+        #output{
+            font-size: 0.9rem;
+        }
+        .delete-animation{
+            background-color: #ef4444 !important;
+            animation: deleteAnimate 0.4s linear forwards;
+        }
+        @keyframes deleteAnimate{
+            to{
+                transform: translateX(100%);
+            }
+        }
+       
+    </style>
+</head>
+<body>
+    <h1>Real-Time Monitoring of Implantable Devices</h1>
+
+    <div class="app">
+        
+        <h3>Health Tracker App</h3>
+        <div class="inputs">
+            <div>
+                <label for="pulse">
+                      Pulse (per min)
+                  </label>
+                <input id="pulse" type="number">
+            </div>
+            <div>
+                <label for="exercise">
+                      Exercise Duration (in min)
+                  </label>
+                <input id="exercise" type="number">
+            </div>
+            <div>
+                <label for="bloodsugerlevel">
+                      Blood Sugar Level (in mg/dL)
+                  </label>
+                <input id="bloodsugerlevel" type="number">
+            </div>
+        </div>
+        <button id="submit">Submit</button>
+        <div id="editSection" class="hidden">
+            <button id="cancelEdit" onclick="cancelEdit()">
+                  Cancel
+              </button>
+            <button id="updateEntry" onclick="editRow()">
+                  Update
+              </button>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Pulse <br> (per min)</th>
+                    <th>Exercise Duration <br> (in min)</th>
+                    <th>Blood Sugar Level <br> (in mg/dL)</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody id="output">
+            </tbody>
+        </table>
+    </div>
+
+    <div class="device-container">
+        <div class="heart-container">
+            <div class="heart"></div>
+        </div>
+        <div class="device-data">Heart Rate: <span id="heartRate">72</span> BPM</div>
+        <div class="graph-container">
+            <div class="graph" id="heartGraph"></div>
+        </div>
+    </div>
+
+    <div class="device-container">
+        <div class="device-data">Neural Device Frequency: <span id="neuralData">15 Hz</span></div>
+        <div class="graph-container">
+            <div class="graph" id="neuralGraph"></div>
+        </div>
+    </div>
+
+    <div class="device-container">
+        <div class="device-data">Pacemaker Status: <span id="pacemakerStatus">Active</span></div>
+        <div class="graph-container">
+            <div class="graph" id="pacemakerGraph"></div>
+        </div>
+    </div>
+
+    <div class="device-container">
+        <div class="device-data">Hearing Aid Functionality: <span id="hearingAidStatus">Optimal</span></div>
+        <div class="graph-container">
+            <div class="graph" id="hearingAidGraph"></div>
+        </div>
+    </div>
+
+    
+
+    <script >
+       
+
+        const editIcon = `<i class="fas fa-edit"></i>`
+    
+        const deleteIcon = `<i class="fas fa-trash"></i>`
+    
+        function clearInputs() {
+            pInput.value = ""
+            eInput.value = ""
+            bInput.value = ""
+        }
+    
+        function addToLocalStorage(){
+            localStorage.setItem("date", JSON.stringify(date))
+            localStorage.setItem("time",JSON.stringify(time))
+            localStorage.setItem("pulse", JSON.stringify(pulse))
+            localStorage.setItem("exercise", JSON.stringify(exercise))
+            localStorage.setItem("bloodsugar", JSON.stringify(bloodsugar))
+        }
+    
+        function activateEdit(i){
+            pInput.value = pulse[i];
+            eInput.value = exercise[i];
+            bInput.value = bloodsugar[i];
+            editIndex = i;
+            submitButton.classList.add("hidden");
+            editSection.classList.remove("hidden");
+        }
+    
+        function cancelEdit() {
+            clearInputs();
+            editIndex = -1;
+            submitButton.classList.remove("hidden");
+            editSection.classList.add("hidden");
+        }
+    
+        function editRow(){
+            if(editIndex==-1) return;
+            pulse[editIndex] = pInput.value;
+            exercise[editIndex] = eInput.value;
+            bloodsugar[editIndex] = bInput.value;
+            fillTable();
+            addToLocalStorage();
+            cancelEdit();
+        }
+    
+        function deleteRow(i){
+            if(!confirm(
+            `Confirm that you want to delete the entry: 
+            \n ${date[i]} ${time[i]}: ${pulse[i]}ml, ${exercise[i]}min, 
+        ${bloodsugar[i]}mg/dL`)) 
+        return
+            date.splice(i, 1)
+            time.splice(i,1)
+            pulse.splice(i, 1)
+            exercise.splice(i, 1)
+            bloodsugar.splice(i, 1)
+        document.querySelector(`#output > tr:nth-child(${i+1})`)
+            .classList.add("delete-animation")
+            addToLocalStorage()
+            setTimeout(fillTable, 500)
+        }
+    
+        function fillTable(){
+            const tbody = document.getElementById("output")
+            const rows = 
+                Math.max(pulse.length, exercise.length, bloodsugar.length)
+            let html = ""
+            for(let i=0; i<rows; i++){
+                let p = pulse[i] || "N/A"
+                let t = time[i] || "N/A"
+                let e = exercise[i] || "N/A"
+                let b = bloodsugar[i] || "N/A"
+                let d = date[i] || "N/A"
+                html+=`<tr>
+                    <td>${d}</td>
+                    <td>${t}</td>
+                    <td>${p}</td>
+                    <td>${e}</td>
+                    <td>${b}</td>
+                    <td>
+                        <button onclick="activateEdit(${i})" 
+                                class="edit">${editIcon}
+                        </button>
+                    </td>
+                    <td>
+                        <button 
+                            onclick="deleteRow(${i})" 
+                            class="delete">${deleteIcon}
+                        </button>
+                    </td>
+                </tr>`
+            }
+            tbody.innerHTML = html;
+        }
+    
+        let editIndex = -1;
+    
+        let date = 
+            JSON.parse(localStorage.getItem("date")) || []
+        let time=
+            JSON.parse(localStorage.getItem("time")) ||  []
+        let pulse = 
+            JSON.parse(localStorage.getItem("pulse")) || []
+        let exercise = 
+            JSON.parse(localStorage.getItem("exercise")) || []
+        let bloodsugar = 
+            JSON.parse(localStorage.getItem("bloodsugar")) || []
+    
+        const pInput = document.getElementById("pulse")
+        const eInput = document.getElementById("exercise")
+        const bInput = document.getElementById("bloodsugerlevel")
+    
+        const submitButton = document.getElementById("submit")
+        const editSection = document.getElementById("editSection")
+    
+        fillTable()
+    
+        submitButton.addEventListener("click", ()=>{
+            const p = pInput.value || null;
+            const e = eInput.value || null;
+            const b = bInput.value || null;
+            if(p===null || e===null || b===null) {
+                alert("Please enter all the fields.")
+                return;
+            }
+            const currentDateTime =new Date()
+            const d = currentDateTime.toLocaleDateString()
+            const t = currentDateTime.toLocaleTimeString()
+            date = [d, ...date]
+            time = [t, ...time]
+            pulse = [p, ...pulse]
+            exercise = [e, ...exercise]
+            bloodsugar = [b, ...bloodsugar]
+            
+            clearInputs()
+            fillTable()
+            addToLocalStorage()
+        })
+    
+    </script>
+     <script>
+        function updateHeartRate() {
+            const heartRateElement = document.getElementById('heartRate');
+            const heartRateGraph = document.getElementById('heartGraph');
+            let heartRate = Math.floor(Math.random() * (100 - 60 + 1)) + 60;
+            heartRateElement.textContent = heartRate;
+
+            drawGraph(heartRateGraph, heartRate / 100);
+        }
+
+        function updateNeuralData() {
+            const neuralDataElement = document.getElementById('neuralData');
+            const neuralGraph = document.getElementById('neuralGraph');
+            let neuralFrequency = Math.floor(Math.random() * (50 - 5 + 1)) + 5;
+            neuralDataElement.textContent = neuralFrequency + ' Hz';
+
+            drawGraph(neuralGraph, neuralFrequency / 50);
+        }
+
+        function updatePacemakerData() {
+            const pacemakerDataElement = document.getElementById('pacemakerData');
+            const pacemakerGraph = document.getElementById('pacemakerGraph');
+            let pacemakerStatus = Math.random() > 0.1 ? 'Normal' : 'Alert';
+            pacemakerDataElement.textContent = pacemakerStatus;
+
+            drawGraph(pacemakerGraph, pacemakerStatus === 'Normal' ? 0.3 : 0.8);
+        }
+
+        function updateHearingAidFrequency() {
+            const hearingAidFrequencyElement = document.getElementById('hearingAidFrequency');
+            const hearingAidGraph = document.getElementById('hearingAidGraph');
+            let hearingAidFrequency = (Math.random() * (4 - 1) + 1).toFixed(2);
+            hearingAidFrequencyElement.textContent = hearingAidFrequency + ' kHz';
+
+            drawGraph(hearingAidGraph, hearingAidFrequency / 4);
+        }
+
+        function drawGraph(container, intensity) {
+            const line = document.createElement('div');
+            line.classList.add('line');
+            line.style.height = intensity * 100 + '%';
+            container.innerHTML = '';
+            container.appendChild(line);
+        }
+
+        setInterval(updateHeartRate, 1000);
+        setInterval(updateNeuralData, 1500);
+        setInterval(updatePacemakerData, 2000);
+        setInterval(updateHearingAidFrequency, 2500);
+    </script>
+</body>
+</html>

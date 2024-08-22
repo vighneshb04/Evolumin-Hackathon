@@ -1,0 +1,749 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(#f8f7f7, #a4ebbc, #7fefb5, #75d08d, #fafcfb);
+}
+header, footer {
+    background-color: #488aec;
+    color: white;
+    padding: 1rem;
+    width: 100%;
+    text-align: center;
+}
+*{
+    margin:0; 
+    padding:0;
+    box-sizing: border-box;
+    outline: none; 
+    border:none;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition:all .2s linear;
+    font-family: "Inter", sans-serif;
+    
+}
+
+html{
+    font-size: 62.5%;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+}
+
+
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align:left;
+    padding: 1.5rem 7%;
+    width: 100%;
+    height: 18%;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
+    z-index: 1000;
+    background-color: white !important;
+
+}
+
+.main-content {
+    margin-top: 150px; /* Adjust this value as needed */
+    padding: 2rem;
+    font-size: xx-large;
+    color: #279c7f;
+  }
+  
+
+.Pharma {
+    color: white;
+    font-size: 1.6rem;
+    padding: 10px;
+    border: #0d0d0d;
+    border: solid 10px;
+    border-radius: 30px;
+    background-color: #46b695;
+    text-align: left;
+    position: absolute;
+    left: 320px;
+    top: 50px;
+}
+
+
+
+.logo {
+    width: 150px;
+}
+
+.logo img {
+    width: 130%;
+    height: 70%;
+}
+
+.navbar a {
+    color: black;
+    font-size: 1.7rem;
+    margin: 1rem;
+    position: relative;
+    transition: 0.5s;
+}
+
+.pharma-button {
+    background-color:#279c7f;
+    text-align: center;
+    width: 12rem; /* 48px in rem */
+    height: 3.5rem; /* 14px in rem */
+    border-radius: 1rem; /* 2xl */
+    position: relative;
+    font-family: sans-serif;
+    color: rgb(250, 250, 250);
+    font-size: 1.25rem; /* xl */
+    font-weight: 600; /* font-semibold */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border: none;
+    cursor: pointer;
+}
+
+.pharma-icon {
+    background-color: #f3f5f4; /* green-400 */
+    border-radius: 0.75rem; /* xl */
+    height: 3rem; /* 12px in rem */
+    width: 25%; /* 1/4 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 0.25rem; /* 1px */
+    top: 0.25rem; /* 4px */
+    transition: width 0.5s;
+    z-index: 10;
+}
+
+.pharma-button:hover .pharma-icon {
+    width: 11.5rem; /* 184px */
+}
+
+.pharma-icon::before {
+    content: '←';
+    font-size: 1.5rem;
+    color: black;
+}
+
+.pharma-text {
+    transform: translateX(0.5rem); 
+}
+
+
+       
+        
+       
+        
+        .product {
+            display: flex;
+            padding: 5px;
+            align-items: left;
+            margin-bottom: 1rem;
+            margin-left: 4rem;
+        }
+        .product input {
+            width: 50px;
+            margin-right: 1rem;
+            border: solid#000 1px;
+            margin-left: 1rem;
+        }
+        .product button {
+            padding: 0.5rem 1rem;
+            background-color: #55c69c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .product button:hover {
+            background-color: #3c8e77;
+        }
+        #cartModal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+            padding: 4rem;
+            padding-top: 60px;
+        }
+.h11{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding-top: 4rem;
+    padding-bottom:  3rem; ;
+    font-size:x-large
+}
+        #cartContent {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover, .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+            
+        }
+        #cart table {
+            width: 100%;
+            border-collapse: collapse;
+            padding: 10rem;
+            font-size: x-large;
+            font-family:'Times New Roman', Times, serif;
+            color: #555f5c;
+        }
+        #cart table, #cart th, #cart td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        #cart th {
+            background-color: #f2f2f2;
+        }
+        #checkoutForm {
+            margin-top: 2rem;
+            margin-bottom: 3rem;
+        }
+        #checkoutForm label {
+            display: block;
+            margin-bottom: 1rem;
+            margin-top: 2rem;
+        }
+        #checkoutForm input, #checkoutForm textarea {
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        #checkoutForm button {
+            padding: 0.75rem 1.5rem;
+            background-color: #488aec;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        #checkoutForm button:hover {
+            background-color: #3b6db0;
+        }
+        #uploadPrescription {
+            margin-top: 1rem;
+        }
+        #uploadButton {
+            padding: 0.5rem 1rem;
+            background-color: #488aec;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            display: inline-block;
+        }
+        #uploadButton:hover {
+            background-color: #3b6db0;
+        }
+        #fileLabel {
+            display: block;
+            margin-top: 0.5rem;
+        }
+        #prescriptionInput {
+            display: none;
+        }
+        .cssbuttons-io-button {
+    display: flex;
+    align-items: center;
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 17px;
+    padding: 0.8em 1.5em 0.8em 1.2em;
+    color: white;
+    background: #53ad95;
+    background: linear-gradient(0deg, rgb(79, 212, 179) 0%, rgb(115, 208, 178) 100%);
+    border: none;
+
+box-shadow: 0 0.7em 1.5em -0.5em rgb(38, 221, 160);
+    letter-spacing: 0.05em;
+    border-radius: 20em;
+  }
+  
+  .cssbuttons-io-button svg {
+    margin-right: 8px;
+  }
+  
+  .cssbuttons-io-button:hover {
+    box-shadow: 0 0.5em 1.5em -0.5em rgb(64, 234, 203);
+  }
+  
+  .cssbuttons-io-button:active {
+    box-shadow: 0 0.3em 1em -0.5em rgb(88, 201, 180);
+  }
+  .modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: fit-content;
+    height: fit-content;
+    background: #FFFFFF;
+    box-shadow: 0px 187px 75px rgba(0, 0, 0, 0.01), 0px 105px 63px rgba(0, 0, 0, 0.05), 0px 47px 47px rgba(0, 0, 0, 0.09), 0px 12px 26px rgba(0, 0, 0, 0.1), 0px 0px 0px rgba(0, 0, 0, 0.1);
+    border-radius: 26px;
+    max-width: 450px;
+    z-index: 1000;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+}
+
+.payment--options {
+    width: calc(100% - 40px);
+    display: grid;
+    grid-template-columns: 33% 34% 33%;
+    gap: 20px;
+    padding: 10px;
+}
+
+.payment--options button {
+    height: 55px;
+    background: #F2F2F2;
+    border-radius: 11px;
+    padding: 0;
+    border: 0;
+    outline: none;
+}
+
+.payment--options button svg {
+    height: 18px;
+}
+
+.payment--options button:last-child svg {
+    height: 22px;
+}
+
+.separator {
+    width: calc(100% - 20px);
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 10px;
+    color: #8B8E98;
+    margin: 0 10px;
+}
+
+.separator > p {
+    word-break: keep-all;
+    display: block;
+    text-align: center;
+    font-weight: 600;
+    font-size: 11px;
+    margin: auto;
+}
+
+.separator .line {
+    display: inline-block;
+    width: 100%;
+    height: 1px;
+    border: 0;
+    background-color: #e8e8e8;
+    margin: auto;
+}
+
+.credit-card-info--form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.input_container {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.split {
+    display: grid;
+    grid-template-columns: 4fr 2fr;
+    gap: 15px;
+}
+
+.split input {
+    width: 100%;
+}
+
+.input_label {
+    font-size: 10px;
+    color: #8B8E98;
+    font-weight: 600;
+}
+
+.input_field {
+    width: auto;
+    height: 40px;
+    padding: 0 0 0 16px;
+    border-radius: 9px;
+    outline: none;
+    background-color: #F2F2F2;
+    border: 1px solid #e5e5e500;
+    transition: all 0.3s cubic-bezier(0.15, 0.83, 0.66, 1);
+}
+
+.input_field:focus {
+    border: 1px solid transparent;
+    box-shadow: 0px 0px 0px 2px #242424;
+    background-color: transparent;
+}
+
+.purchase--btn {
+    height: 55px;
+    background: #F2F2F2;
+    border-radius: 11px;
+    border: 0;
+    outline: none;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 700;
+    background: linear-gradient(180deg, #363636 0%, #1B1B1B 50%, #000000 100%);
+    box-shadow: 0px 0px 0px 0px #FFFFFF, 0px 0px 0px 0px #000000;
+    transition: all 0.3s cubic-bezier(0.15, 0.83, 0.66, 1);
+}
+
+.purchase--btn:hover {
+    box-shadow: 0px 0px 0px 2px #FFFFFF, 0px 0px 0px 4px #0000003a;
+}
+
+/* Reset input number styles */
+.input_field::-webkit-outer-spin-button,
+.input_field::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.input_field[type=number] {
+    appearance: textfield;
+}
+
+#closePopupBtn {
+    background: none;
+    border: none;
+    color: #000;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}
+
+#overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 500;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  
+  .col-2 {
+    flex-basis: 50%;
+    min-width: 300px;
+  }
+  
+  .col-2 img {
+    max-width: 100%;
+    padding: 50px 0;
+  }
+  
+  .col-2 h1 {
+    font-size: 50px;
+    line-height: 60px;
+    margin: 25px 0;
+  }
+  
+  .btn {
+    display: inline-block;
+    background: #ff523b;
+    color: #ffffff;
+    padding: 8px 30px;
+    margin: 30px 0;
+    border-radius: 30px;
+    transition: background 0.5s;
+  }
+  
+  .btn:hover {
+    background: #563434;
+  }
+  
+  .header {
+    background: radial-gradient(#fff, #ffd6d6);
+  }
+  
+  .header .row {
+    margin-top: 70px;
+  }
+  
+  .categories {
+    margin: 70px 0;
+  }
+  
+  .col-3 {
+    flex-basis: 30%;
+    min-width: 250px;
+    margin-bottom: 30px;
+  }
+  
+  .col-3 img {
+    width: 100%;
+  }
+  
+  .small-container {
+    max-width: 1080px;
+    margin: auto;
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+  
+  .col-4 {
+    flex-basis: 25%;
+    padding: 10px;
+    min-width: 200px;
+    margin-bottom: 50px;
+    transition: transform 0.5s;
+    
+  }
+  
+  .col-4 img {
+    width: 70%;
+    height: 10%;
+    margin-left: 4rem;
+  }
+  
+  .title {
+    text-align: center;
+    margin: 0 auto 80px;
+    position: relative;
+    line-height: 60px;
+    color: #555;
+  }
+  .title::after {
+    content: "";
+    background: #ff523b;
+    width: 80px;
+    height: 5px;
+    border-radius: 5px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%);
+  }
+  
+  h4 {
+    color: #555;
+    font-weight: normal;
+  }
+  
+  .col-4 p {
+    font-size: 14px;
+    margin-left: 3rem;
+  }
+  .col-4 .product{
+    margin-left: 2rem;
+  }
+ 
+  
+  .rating .fas {
+    color: #ff523b;
+  }
+  
+  .rating .far {
+    color: #ff523b;
+  }
+  
+  .col-4:hover {
+    transform: translateY(-5px);
+  }
+  .cartt{
+    margin-left: 2rem;
+  }
+
+
+
+
+
+  footer{
+    background-color: #279c7f;
+    color: #fff;
+    padding: 100px 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 3rem;
+    
+}
+
+footer h3{
+    font-size: 48px;
+}
+
+footer .right{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 26px;
+}
+
+footer .right .links{
+    display: flex;
+    gap: 30px;
+    font-size: large;
+}
+
+footer .right .links a{
+    color: #ffffff;
+    transition: color 0.3s ease;
+}
+
+footer .right .links a:hover{
+    color: #fff;
+}
+
+footer .right .social{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+footer .right .social i{
+    font-size: 30px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    color: #fff;
+}
+
+footer .right .social i:hover{
+    color: #31f1c4;
+}
+
+footer .right p{
+    font-size: 13px;
+    color: #ffffff;
+}
+
+
+
+
+
+/*search*/
+.group {
+    display: flex;
+    line-height: 28px;
+    align-items: center;
+    position: relative;
+    max-width: 190px;
+    size: 170px;
+    margin-bottom: 5rem;
+    margin-top: 2rem;
+   }
+   
+   .input {
+    width: 100%;
+    height: 40px;
+    line-height: 28px;
+    padding: 0 1rem;
+    padding-left: 2.5rem;
+    border: 2px solid transparent;
+    border-radius: 18px;
+    outline: none;
+    background-color: #f3f3f4;
+    color: #0d0c22;
+    transition: .3s ease;
+   }
+   
+   .input::placeholder {
+    color: #9e9ea7;
+   }
+   
+   .input:focus, input:hover {
+    outline: none;
+    border-color: rgba(89, 203, 165, 0.621);
+    background-color: #fff;
+    box-shadow: 0 0 0 1px rgba(58, 178, 128, 0.722);
+   }
+   
+   .icon {
+    position: absolute;
+    left: 1rem;
+    fill: #9e9ea7;
+    width: 1rem;
+    height: 1rem;
+   }
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   

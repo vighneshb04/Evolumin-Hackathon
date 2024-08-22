@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drivers</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body{
+            background-color:aquamarine;
+        }
+        #map-container{
+            width:100%;
+            height:450px;
+            margin-top:20px;
+        }
+        iframe{
+            width:100%;
+            height:100%;
+            border:none;
+        }
+        .align-right {
+            float:right;
+            margin-left:10px;
+        }
+        .card:hover {
+            transform:scale(1.05);
+            transition:transform 0.4s;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+             <img src="logo.png" class="img-fluid" style="width: 100px; height: 100px;">
+             <img src="ambulocation.jpg" class="img-fluid align-right" style="width: 100px; height: 100px;">
+        </div>
+        <h1 class="text-center my-4">Available Drivers</h1>
+        <div class="row">
+            {{#each drivers}}
+                <div class="col-md-4 mb-4">
+                                          <div class="card shadow-sm">
+                                            <div class="card-body">
+                                             <h5 class="card-title">Name:{{this.name}}</h5>
+                                      <p class="card-text">Vehicle Number:{{this.vehicle_number}}</p>
+                            <button class="btn btn-primary" onclick="showMap('{{this.latitude}}','{{this.longitude}}')">Show Map</button>
+                        </div>
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+        <div id="map-container"></div>
+    </div>
+    
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        
+        function loginForm(){
+            const username=admin;
+            const password=password;
+            const user_username_input=prompt("Enter the username:");
+            const user_password_input=prompt("Enter the password:");
+            
+            return username===user_username_input&&password===user_password_input;
+           
+        }
+         function authenticate(){
+    while (!loginForm()){
+        alert("Incorrect username or password. Please try again.");
+    }
+     document.body.style.display='block';
+         }
+       window.onload=authenticate;
+        function showMap(latitude,longitude){
+            const mapContainer=document.getElementById('map-container');
+            mapContainer.innerHTML=`<iframe
+                loading="lazy"
+                allowfullscreen
+                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyD8uluFvIoNmZzfmjd_vluHbNjAhoCubSs
+                &q=${latitude},${longitude}&zoom=14">
+            </iframe>`;
+        }
+    </script>
+</body>
+</html>

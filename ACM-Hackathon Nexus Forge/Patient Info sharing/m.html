@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Patient Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(white, rgb(94, 249, 233));
+            margin: 0;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
+        .container {
+            background: #fff;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            max-width: 100%;
+            width: 600px;
+        }
+        .form-group {
+            margin-bottom: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .form-group label {
+            width: 100%;
+            margin-bottom: 5px;
+        }
+        .form-group input, .form-group select, .form-group textarea {
+            width: calc(100% - 20px);
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 8px;
+        }
+        .form-group textarea {
+            resize: vertical;
+        }
+        .form-group input[type="submit"] {
+            background: lightgreen;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            padding: 8px 16px;
+            font-size: 16px;
+        }
+        .form-group .half-width {
+            width: calc(50% - 10px);
+            margin-right: 10px;
+        }
+        .form-group .full-width {
+            width: calc(100% - 20px);
+        }
+        .hidden {
+            display:none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container"> <img style="text-align:center ;" src="https://i.pinimg.com/736x/fb/93/f8/fb93f851cbf92fecc7fb869fa757c4e7.jpg" width="400">
+        <h2>New Patient Registration</h2>
+        <form id="registrationForm" action="live.php" method="post">
+            
+            <div class="form-group">
+                <label for="patientName">Patient Name*</label>
+                <input type="text" id="firstName" name="firstName" placeholder="First Name" class="half-width" required>
+                <input type="text" id="lastName" name="lastName" placeholder="Last Name" class="half-width" required>
+            </div>
+            <div class="form-group">
+                <label for="sex">Sex*</label>
+                <select id="sex" name="sex" class="half-width" required>
+                    <option value="" disabled selected>Please Select</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="dateOfBirth">Date of Birth*</label>
+                <input type="date" id="dateOfBirth" name="dateOfBirth" class="full-width" required>
+            </div>
+            <div class="form-group">
+                <label for="phoneNumber">Phone Number*</label>
+                <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="(000)-000-0000" class="full-width" required >
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="example@example.com" class="full-width">
+            </div>
+            <div class="form-group">
+                <label for="address">Address*</label>
+                <input type="text" id="streetAddress" name="streetAddress" placeholder="Street Address" class="full-width" required>
+                <input type="text" id="streetAddressLine2" name="streetAddressLine2" placeholder="Street Address Line 2" class="full-width">
+                <input type="text" id="city" name="city" placeholder="City" class="half-width" required>
+                <input type="text" id="state" name="state" placeholder="State / Province" class="half-width" required>
+                <input type="text" id="postalCode" name="postalCode" placeholder="Postal / Zip Code" class="half-width" required>
+            </div>
+            <div class="form-group">
+                <label for="isYoungerThan18">Is the patient younger than 18?</label>
+                <select id="isYoungerThan18" name="isYoungerThan18" class="full-width" required>
+                    <option value="" disabled selected>Please Select</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+            <div id="parentInfo" class="form-group hidden">
+                <label for="parentName">Parent Name</label>
+                <input type="text" id="parentFirstName" name="parentFirstName" placeholder="First Name" class="half-width">
+                <input type="text" id="parentLastName" name="parentLastName" placeholder="Last Name" class="half-width">
+                <label for="parentPhoneNumber">Parent Phone Number</label>
+                <input type="tel" id="parentPhoneNumber" name="parentPhoneNumber" placeholder="(000)-000-0000" class="full-width" >
+            </div>
+            <div class="form-group">
+                <label for="emergencyContact">Emergency Contact*</label>
+                <input type="text" id="emergencyFirstName" name="emergencyFirstName" placeholder="First Name" class="half-width" required>
+                <input type="text" id="emergencyLastName" name="emergencyLastName" placeholder="Last Name" class="half-width" required>
+                <input type="text" id="relationship" name="relationship" placeholder="Relationship" class="half-width" required>
+                <input type="tel" id="emergencyContactNumber" name="emergencyContactNumber" placeholder="(000)-000-0000" class="half-width" required >
+            </div>
+            <div class="form-group">
+                <label for="anyFamilyDoctor">Any Family Doctor?</label>
+                <select id="anyFamilyDoctor" name="anyFamilyDoctor" class="full-width" required>
+                    <option value="" disabled selected>Please Select</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+            <div id="familyDoctorInfo" class="form-group hidden">
+                <label for="familyDoctorName">Family Doctor Name</label>
+                <input type="text" id="familyDoctorFirstName" name="familyDoctorFirstName" placeholder="First Name" class="half-width">
+                <input type="text" id="familyDoctorLastName" name="familyDoctorLastName" placeholder="Last Name" class="half-width">
+                <label for="familyDoctorPhoneNumber">Family Doctor Phone Number</label>
+                <input type="tel" id="familyDoctorPhoneNumber" name="familyDoctorPhoneNumber" placeholder="(000)-000-0000" class="full-width" >
+            </div>
+            <div class="form-group">
+                <label for="preferredPharmacy">Preferred Pharmacy</label>
+                <input type="tel" id="pharmacyPhoneNumber" name="pharmacyPhoneNumber" placeholder="(000)-000-0000" class="full-width" >
+            </div>
+            <div class="form-group">
+                <label for="healthHistory">Health History</label>
+                <textarea id="healthHistory" name="healthHistory" placeholder="Reason for Registration" class="full-width" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="additionalNotes">Additional Notes</label>
+                <textarea id="additionalNotes" name="healthHistory" class="full-width" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="takingMedications">Taking any medications, currently?</label>
+                <select id="takingMedications" name="takingMedications" class="full-width" required>
+                    <option value="" disabled selected>Please Select</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+            <div id="medicationInfo" class="form-group hidden">
+                <label for="medications">Please list them here</label>
+                <textarea id="medications" name="medications" class="full-width" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Register">
+            </div>
+        </form>
+    </div>
+    <script>
+       document.getElementById('isYoungerThan18').addEventListener('change', function() {
+    var parentInfo = document.getElementById('parentInfo');
+    if (this.value === 'yes') {
+        parentInfo.classList.remove('hidden');
+    document.getElementById('parentPhoneNumber').addEventListener('input',function(){
+    var parentPhoneNumber=this.value;
+    if(parentPhoneNumber.length>10){
+        this.value=parentPhoneNumber.slice(0,10);
+    }
+});
+    } else {
+        parentInfo.classList.add(' hidden');
+    }
+});
+
+document.getElementById('anyFamilyDoctor').addEventListener('change', function() {
+    var familyDoctorInfo = document.getElementById('familyDoctorInfo');
+    if (this.value === 'yes') {
+        familyDoctorInfo.classList.remove('hidden');
+    document.getElementById('familyDoctorPhoneNumber').addEventListener('input',function(){
+    var familyDoctorPhoneNumber=this.value;
+    if(familyDoctorPhoneNumber.length>10){
+        this.value=familyDoctorPhoneNumber.slice(0,10);
+    }
+});
+        
+    } else {
+        familyDoctorInfo.classList.add(' hidden');
+    }
+});
+
+document.getElementById('takingMedications').addEventListener('change', function() {
+    var medicationInfo = document.getElementById('medicationInfo');
+    if (this.value === 'yes') {
+        medicationInfo.classList.remove('hidden');
+    } else {
+        medicationInfo.classList.add('hidden');
+    }
+});
+document.getElementById('phoneNumber').addEventListener('input',function(){
+    var phoneNumber=this.value;
+    if(phoneNumber.length>10){
+        this.value=phoneNumber.slice(0,10);
+    }
+});
+document.getElementById('emergencyContactNumber').addEventListener('input',function(){
+    var emergencyContactNumber=this.value;
+    if (emergencyContactNumber.length> 10) {
+        this.value=emergencyContactNumber.slice(0,10);
+    }
+});
+document.getElementById('pharmacyPhoneNumber').addEventListener('input',function(){
+    var pharmacyPhoneNumber=this.value;
+    if (pharmacyPhoneNumber.length> 10) {
+        this.value=pharmacyPhoneNumber.slice(0,10);
+    }
+});
+    </script>
+</body>
+</html>

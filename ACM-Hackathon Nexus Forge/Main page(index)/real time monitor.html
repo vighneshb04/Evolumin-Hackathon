@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-Time Monitoring of Implantable Devices</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+            background-attachment: fixed;
+            color: #fff;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+        }
+
+        .device-container {
+            width: 80%;
+            margin-bottom: 40px;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .heart-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .heart {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            transform: rotate(-45deg);
+            position: relative;
+            animation: heartbeat 1s infinite;
+        }
+
+        .heart::before,
+        .heart::after {
+            content: "";
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: red;
+            position: absolute;
+        }
+
+        .heart::before {
+            top: -50px;
+            left: 0;
+        }
+
+        .heart::after {
+            top: 0;
+            left: 50px;
+        }
+
+        @keyframes heartbeat {
+            0% {
+                transform: scale(1) rotate(-45deg);
+            }
+            25% {
+                transform: scale(1.1) rotate(-45deg);
+            }
+            50% {
+                transform: scale(1) rotate(-45deg);
+            }
+            100% {
+                transform: scale(1.1) rotate(-45deg);
+            }
+        }
+
+        .device-data {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        .graph-container {
+            width: 100%;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .graph {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .graph .line {
+            position: absolute;
+            bottom: 0;
+            width: 0;
+            height: 100%;
+            border-right: 2px solid #00f1a1;
+            animation: draw 2s linear infinite;
+        }
+
+        @keyframes draw {
+            0% {
+                width: 0;
+            }
+            100% {
+                width: 100%;
+            }
+        }
+
+        .accessible {
+            margin-top: 30px;
+            font-size: 1em;
+            text-align: center;
+            max-width: 800px;
+            color: #eee;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Real-Time Monitoring of Implantable Devices</h1>
+
+    <div class="device-container">
+        <div class="heart-container">
+            <div class="heart"></div>
+        </div>
+        <div class="device-data">Heart Rate: <span id="heartRate">72</span> BPM</div>
+        <div class="graph-container">
+            <div class="graph" id="heartGraph">
+                <!-- Heart rate graph line will be drawn here -->
+            </div>
+        </div>
+    </div>
+
+    <div class="device-container">
+        <div class="device-data">Neural Device Frequency: <span id="neuralData">15 Hz</span></div>
+        <div class="graph-container">
+            <div class="graph" id="neuralGraph">
+                <!-- Neural activity graph line will be drawn here -->
+            </div>
+        </div>
+    </div>
+
+    <div class="device-container">
+        <div class="device-data">Pacemaker Status: <span id="pacemakerData">Normal</span></div>
+        <div class="graph-container">
+            <div class="graph" id="pacemakerGraph">
+                <!-- Pacemaker status graph line will be drawn here -->
+            </div>
+        </div>
+    </div>
+
+    <div class="device-container">
+        <div class="device-data">Hearing Aid Frequency: <span id="hearingAidFrequency">2.4 kHz</span></div>
+        <div class="graph-container">
+            <div class="graph" id="hearingAidGraph">
+                <!-- Hearing aid frequency graph line will be drawn here -->
+            </div>
+        </div>
+    </div>
+
+    <div class="accessible">
+        We are committed to inclusivity and have designed our platform to be fully accessible, accommodating users with diverse needs including visual, auditory, motor, and cognitive impairments.
+    </div>
+
+    <script>
+        function updateHeartRate() {
+            const heartRateElement = document.getElementById('heartRate');
+            const heartRateGraph = document.getElementById('heartGraph');
+            let heartRate = Math.floor(Math.random() * (100 - 60 + 1)) + 60;
+            heartRateElement.textContent = heartRate;
+
+            drawGraph(heartRateGraph, heartRate / 100);
+        }
+
+        function updateNeuralData() {
+            const neuralDataElement = document.getElementById('neuralData');
+            const neuralGraph = document.getElementById('neuralGraph');
+            let neuralFrequency = Math.floor(Math.random() * (50 - 5 + 1)) + 5;
+            neuralDataElement.textContent = neuralFrequency + ' Hz';
+
+            drawGraph(neuralGraph, neuralFrequency / 50);
+        }
+
+        function updatePacemakerData() {
+            const pacemakerDataElement = document.getElementById('pacemakerData');
+            const pacemakerGraph = document.getElementById('pacemakerGraph');
+            let pacemakerStatus = Math.random() > 0.1 ? 'Normal' : 'Alert';
+            pacemakerDataElement.textContent = pacemakerStatus;
+
+            drawGraph(pacemakerGraph, pacemakerStatus === 'Normal' ? 0.3 : 0.8);
+        }
+
+        function updateHearingAidFrequency() {
+            const hearingAidFrequencyElement = document.getElementById('hearingAidFrequency');
+            const hearingAidGraph = document.getElementById('hearingAidGraph');
+            let hearingAidFrequency = (Math.random() * (4 - 1) + 1).toFixed(2);
+            hearingAidFrequencyElement.textContent = hearingAidFrequency + ' kHz';
+
+            drawGraph(hearingAidGraph, hearingAidFrequency / 4);
+        }
+
+        function drawGraph(container, intensity) {
+            const line = document.createElement('div');
+            line.classList.add('line');
+            line.style.height = intensity * 100 + '%';
+            container.innerHTML = '';
+            container.appendChild(line);
+        }
+
+        setInterval(updateHeartRate, 1000);
+        setInterval(updateNeuralData, 1500);
+        setInterval(updatePacemakerData, 2000);
+        setInterval(updateHearingAidFrequency, 2500);
+    </script>
+
+</body>
+</html>

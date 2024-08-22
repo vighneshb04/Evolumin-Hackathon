@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital management website</title>
+
+    <script src="https://kit.fontawesome.com/c1df782baf.js"></script>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.1.0/uicons-thin-rounded/css/uicons-thin-rounded.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.1.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="style1.css">
+
+</head>
+<body> 
+
+    <header>
+        
+        <div class="logo"><img src="images/logo1.png" alt=""></div>
+
+        <nav class="navbar">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#service">Service</a>
+            <a href="#Founders">Founders</a>
+            <a href="#contact">Contact</a>
+        </nav>
+
+        <div class="right-icons">
+            <div id="menu-bars" class="fas fa-bars"></div>
+            <div class="btn">Admin Login</div>
+        </div>
+
+    </header>
+
+   
+
+        <div class="main-home" id="home">
+
+            <div class="home">
+                <div class="home-left-content">
+                    <h2 class="h2">Service to Serenity<br>Caring for your health</h2>
+                    
+                
+                        <div class="home-btn">
+                            <a href="#about">Read More</a>
+                            
+                        </div>
+                        
+                    </div>
+
+                <div class="home-right-content" >
+                    <img src="images/doc1.png" alt="">
+                </div>
+            </div>
+            <div id="about"></div>
+        </div>
+<div id="about"></div>
+
+        <div class="main-about" >
+
+            <div class="about-heading">About Us</div>
+
+            <div class="inner-main-about">
+                <div class="about-inner-content-left">
+                    <img src="images/docs.png" alt="">
+                </div>
+
+                <div class="about-inner-content">
+                    <div class="about-right-content">
+                        <h2>Welcome to Rapheal healthcare</h2>
+                        <p>
+                            Your comprehensive healthcare communication platform tailored for university hostels.We are committed to ensuring the well-being and safety of every student through seamless and efficient healthcare services.<br><br><b><h1>Our Serices include</h1></b></p>
+                        <p class="aboutsec-content" >
+                            
+                           <b>Ambulance Tracking:</b> Real-time tracking of ambulances to ensure timely medical assistance during emergencies.<br>
+<b>Patient Info Sharing:</b> Secure and confidential sharing of patient information between healthcare providers and relevant authorities.<br>
+<b>Isolation Alerts:</b> Instant alerts and notifications about isolation requirements to manage infectious diseases and ensure safety.<br>
+<b>Pharmacy Delivery:</b> Convenient and prompt delivery of medications from our partnered pharmacies directly to your doorstep.<br>
+<b>Real-time Monitoring of Implantable Devices:</b> Continuous monitoring of medical implants to provide real-time health updates and immediate response to any anomalies.<br>
+<b>Acessibility for All Impairments:</b> Our platform is designed to be fully accessible, catering to users with visual, auditory, motor, and cognitive impairments<br>
+
+</p>
+<div id="service"></div>
+                            <p id="extraContent" style="display: none;">Our mission is to revolutionize healthcare communication in university hostels by providing a user-friendly, accessible, and reliable platform. We aim to bridge the gap between healthcare providers and students, ensuring that medical assistance is always within reach.<br>Join us in making university hostels a safer and healthier place for everyone. Together, we can ensure that every student has access to the best possible healthcare services.</p>
+</div>
+                            <button class="aboutbtn"  onclick="toggleReadMore()" id="readMoreBtn">Read More</button>
+                            
+                    </div>
+                </div>
+            </div >
+        </div>
+        
+        <script>
+            function toggleReadMore() {
+              var extraContent = document.getElementById('extraContent');
+              var button = document.getElementById('readMoreBtn');
+          
+              if (extraContent.style.display === 'none') {
+                extraContent.style.display = 'block';
+                button.innerText = 'Read Less';
+              } else {
+                extraContent.style.display = 'none';
+                button.innerText = 'Read More';
+              }
+            }
+          </script>
+
+    <div class="our-service" >
+        <div class="service-heading">
+            <h2>Our Services</h2>
+        </div>
+
+        <div class="main-services">
+            <div class="inner-services">
+                <div class="service-icon">
+                    <i class="fa-solid fa-truck-medical"></i>
+                </div>
+                <a style="color: black;" href="../ambulance tracker/package-lock.json">
+                <h3>Ambulance Tracking</h3></a>
+                <p>Our advanced ambulance tracking system utilizes GPS technology to monitor the location of ambulances in real-time. This ensures that emergency medical services can be dispatched quickly and efficiently to those in need, reducing response times and saving lives.</p>
+            </div>
+
+            <div class="inner-services">
+                <div class="service-icon">
+                    <i class="fa-regular fa-hospital"></i>
+                </div>
+                <a style="color: black;" href="../isolation alert/"></a>
+                <h3>Isolation Alerts</h3>
+                <p>In response to emerging infectious diseases, our system delivers instant alerts regarding isolation protocols and requirements. This helps healthcare facilities and individuals effectively manage outbreaks, reduce transmission risks, and safeguard community health.</p>
+            </div>
+
+            <div class="inner-services">
+                <div class="service-icon">
+                    <i class="fa fa-heartbeat"></i>
+                </div>
+                <a style="color: black;" href="../Real time monitoring impairables/real time monitor.html"></a>
+                <h3>Real-Time Monitoring Of Implantable Devices</h3>
+                <p>We are committed to inclusivity and have designed our platform to be fully accessible, accommodating users with diverse needs including visual, auditory, motor, and cognitive impairments.</p>
+            </div>
+
+            <div class="inner-services">
+                <div class="service-icon">
+                    <i class="fa fa-address-book-o"></i>
+                </div>
+                <a style="color: black;" href="../Patient Info sharing/m.html"></a>
+                <h3>Patient Info Sharing</h3>
+                <p>Facilitating seamless communication, our platform enables healthcare providers to securely share vital patient information with authorized personnel and relevant authorities. This ensures coordinated care, accurate diagnoses, and timely treatment decisions, all while maintaining strict confidentiality.</p>
+            </div>
+
+            <div class="inner-services">
+                <div class="service-icon">
+                    <i class="fa fa-medkit"></i>
+                </div>
+                <a style="color: black;" href="../Pharmacy delivery/Pharmacy.html">
+                <h3>Pharmacy Delivery</h3>
+                <p>Partnering with trusted pharmacies, we offer a convenient pharmacy delivery service, ensuring patients receive their medications promptly and directly at their doorstep. This eliminates the need for unnecessary trips to pharmacies, enhances medication adherence, and promotes overall health and well-being.</p>
+            </a>
+            </div>
+
+            
+            <div class="inner-services">
+                <div class="service-icon">
+                    <i class="fa-solid fa-user-doctor"></i>
+                </div>
+                <a style="color: black;" href="../Acessibility for impairable device/acessibility for impairable device.html"></a>
+                <h3>Acessibility For All Impairments</h3>
+                
+                <p>We are committed to inclusivity and have designed our platform to be fully accessible, accommodating users with diverse needs including visual, auditory, motor, and cognitive impairments. We ensure that everyone can access and benefit from our healthcare services equitably.</p>
+                <div id="Founders"></div>
+            </div>
+        </div>
+        
+    </div>
+
+
+   
+        <div class="main-review" >
+            <section>  
+                
+            <div class="review-heading">
+                <h1>Founders</h1>
+            </div>
+
+            <div class="main-inner-review">
+
+                <div class="review-inner-content">
+
+                    <div class="review-box">
+                        <img src="images/vicky.jpg" alt="">
+
+                        <h2>Dr Vighnesh B</h2>
+                        
+    
+                        <div class="review-text">
+                            <p>Dr.Vighnesh B, MBBS, Specializes in Neurology And Holds An MBA, Combining Medical Expertise With Strategic Leadership. As The Founder Of Raphael Health Care, He Has Fostered A Reputation For Excellence In Healthcare And Business Administration. </p>
+                        </div>
+
+                    </div>
+
+                    <div class="review-box">
+                        <img src="images/reshu.jpg" alt="">
+
+                        <h2>Dr Reshma Sri</h2>
+                        
+    
+                        <div class="review-text">
+                            <p>Dr. Reshma Sri, MBBS With A Specialization In Pediatrics, Brings A Wealth Of Medical Expertise To Her Role As Managing Partner And Healthcare Manager At Raphael Health Care. Expert in Pediatric And Strategic Leadership In Healthcare Administration</p>
+                        </div>
+
+                    </div>
+
+                    <div class="review-box">
+                        <img src="images/adi.png" class="img1">
+
+                        <h2>Dr Aditya Kiran</h2>
+                        
+    
+                        <div class="review-text">
+                            <p>Dr. Aditya Kiran, A Leading Cardiologist And Head Of Surgery At Raphael HealthCare. As The Founding Partner, He Combined Expert Knowledge In Cardiology And Strategic Skills Ensures Exemplary Patient Care And Operational Efficiency.</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+        </div>
+    
+<div id="contact"></div>
+
+
+    <footer>
+        <h3>Explore, Innovate, and Transform Your Healthcare Experience</h3>
+        <div class="right">
+            <div class="links">
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="#about">About Us</a>
+                <a href="faq.html">FAQs</a>
+                <a href="mailto:vighesh.b@gmail.com">Email</a>
+
+            </div>
+            <div class="social">
+                <a href="https://www.instagram.com/your-instagram-profile" target="_blank"><i class='bx bxl-instagram'></i></a>
+                <a href="https://www.facebook.com/your-facebook-page" target="_blank"><i class='bx bxl-facebook-square'></i></a>
+                <a href="https://github.com/your-github-profile" target="_blank"><i class='bx bxl-github'></i></a>
+            </div>
+            
+            <p>Copyright © 2024 Nexus Forge, All Rights Reserved.</p>
+        </div>
+    </footer>
+
+
+    
+</body>
+</html>

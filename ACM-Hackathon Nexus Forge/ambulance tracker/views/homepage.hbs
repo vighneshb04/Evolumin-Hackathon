@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ambulance Services</title>
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #e8f5e9; /* Very light green background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            font-family: 'Arial', sans-serif;
+            color: #333;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 2.5rem;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .container {
+            max-width: 500px;
+            padding: 30px;
+            background-color: #A9C3B1; /* Color from the uploaded image */
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            color: #fff;
+        }
+
+        .btn {
+            margin: 10px 0;
+            width: 100%;
+            padding: 15px;
+            font-size: 1.1rem;
+            border-radius: 30px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .btn-primary {
+            background-color: #5da960; /* Darker green for 'Add Ambulance Details' button */
+            border-color: #357a38;
+        }
+
+        .btn-primary:hover {
+            background-color: #2e6e32;
+            transform: translateY(-3px);
+        }
+
+        .btn-secondary {
+            background-color: #fff; /* Switch background and text colors */
+            color: #6c757d; /* Original background color */
+            border-color: #fff;
+        }
+
+        .btn-secondary:hover {
+            background-color: #f8f9fa; /* Slightly lighter color on hover */
+            color: #545b62;
+            transform: translateY(-3px);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="logo.png" alt="Ambulance Service Logo"> 
+        <h1>Welcome to the Ambulance Services Portal</h1>
+        <p>Please select an option:</p>
+        <a href="/authenticate" class="btn btn-primary">Add Ambulance Details</a>
+        <a href="/drivers" class="btn btn-secondary">View Driver Details</a>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Isolation Alert Center</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f0f8f4; /* Light green background */
+        }
+        .container {
+            margin-top: 20px;
+        }
+        .card {
+            border: 1px solid #c1d3b5; /* Light green border */
+            border-radius: 10px;
+        }
+        .card-header {
+            background-color: #a1bda8; /* Slightly darker green */
+            color: white;
+        }
+        .btn-primary {
+            background-color: #4CAF50; /* Dark green */
+            border-color: #4CAF50;
+        }
+        .btn-primary:hover {
+            background-color: #45a049; /* Slightly lighter dark green */
+            border-color: #45a049;
+        }
+        table thead {
+            background-color: #a1bda8; /* Slightly darker green for table header */
+            color: white;
+        }
+        table th, table td {
+            vertical-align: middle;
+        }
+        .form-group label {
+            font-weight: bold;
+        }
+        .alert-message {
+            background-color: #e0f2e9; /* Light green background for alert messages */
+            border-left: 5px solid #4CAF50; /* Dark green border */
+        }
+        .logo {
+            width: 150px; /* Adjust size as needed */
+            margin: 20px auto;
+            display: block;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="logo.png" alt="Isolation Alert Center Logo" class="logo">
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h1>Create New Isolation Alert</h1>
+            </div>
+            <div class="card-body">
+                <form action="/alerts" method="POST">
+                    <div class="form-group">
+                        <label for="name">Student Name:</label>
+                        <input type="text" id="name" name="student_name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="ID">Student ID:</label>
+                        <input type="text" id="ID" name="student_id" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="class">Student Class:</label>
+                        <input type="text" id="class" name="student_class" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="alertmsg">Alert Message:</label>
+                        <textarea id="alertmsg" name="alert_message" class="form-control" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Create Alert</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="card mt-4">
+            <div class="card-header">
+                <h2>Current Alerts</h2>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Student Name</th>
+                            <th>Student ID</th>
+                            <th>Student Class</th>
+                            <th>Alert Message</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each alerts}}
+                        <tr>
+                            <td>{{this.student_name}}</td>
+                            <td>{{this.student_id}}</td>
+                            <td>{{this.student_class}}</td>
+                            <td class="alert-message">{{this.alert_message}}</td>
+                            <td>
+                                <form action="/alerts/delete/{{this.id}}" method="POST" onsubmit="return confirm('Are you sure you want to delete this alert?');">
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

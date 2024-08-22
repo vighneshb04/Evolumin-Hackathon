@@ -1,0 +1,554 @@
+
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+ 
+*{
+    margin:0; 
+    padding:0;
+    box-sizing: border-box;
+    outline: none; 
+    border:none;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition:all .2s linear;
+    font-family: "Inter", sans-serif;
+    
+}
+
+html{
+    font-size: 62.5%;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+}
+
+
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align:left;
+    padding: 1.5rem 7%;
+    width: 100%;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
+    z-index: 1000;
+    background-color: white !important;
+
+}
+.Pharma {
+    color: white;
+    font-size: 1.6rem;
+    padding: 10px;
+    border: #0d0d0d;
+    border: solid 10px;
+    border-radius: 30px;
+    background-color: #46b695;
+    text-align: left;
+    position: absolute;
+    left: 320px;
+    top: 70px;
+}
+
+
+
+.logo {
+    width: 150px;
+}
+
+.logo img {
+    width: 130%;
+    height: 70%;
+}
+
+.navbar a {
+    color: black;
+    font-size: 1.7rem;
+    margin: 1rem;
+    position: relative;
+    transition: 0.5s;
+}
+
+.pharma-button {
+    background-color:#279c7f;
+    text-align: center;
+    width: 12rem; /* 48px in rem */
+    height: 3.5rem; /* 14px in rem */
+    border-radius: 1rem; /* 2xl */
+    position: relative;
+    font-family: sans-serif;
+    color: rgb(250, 250, 250);
+    font-size: 1.25rem; /* xl */
+    font-weight: 600; /* font-semibold */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border: none;
+    cursor: pointer;
+}
+
+.pharma-icon {
+    background-color: #f3f5f4; /* green-400 */
+    border-radius: 0.75rem; /* xl */
+    height: 3rem; /* 12px in rem */
+    width: 25%; /* 1/4 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 0.25rem; /* 1px */
+    top: 0.25rem; /* 4px */
+    transition: width 0.5s;
+    z-index: 10;
+}
+
+.pharma-button:hover .pharma-icon {
+    width: 11.5rem; /* 184px */
+}
+
+.pharma-icon::before {
+    content: '←';
+    font-size: 1.5rem;
+    color: black;
+}
+
+.pharma-text {
+    transform: translateX(0.5rem); 
+}
+
+
+.home {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 6rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .home .home-left-content {
+            flex: 1 1 40rem;
+        }
+
+        .home-left-content h2 {
+            font-size: 50px;
+            margin-top: 7rem;
+            color: rgba(47, 148, 112, 0.912);
+            margin-left: 4rem;
+        }
+
+       
+        .home-btn {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .home-btn a {
+            display: inline-block;
+            padding: 1.5rem 3rem;
+            background-color:#46b695;
+            font-size: 1.7rem;
+            color: rgb(255, 255, 255);
+            transition: 0.5s ease;
+            margin-left: 20rem;
+        }
+
+        .home-btn a:hover {
+            padding: 1.5rem 2.5rem;
+        }
+
+       
+
+        .home .home-right-content {
+            flex: 1 1 50rem;
+        }
+
+        .home .home-right-content img {
+            width: 100%;
+            margin-top: 8rem;
+        }
+
+
+
+
+.card {
+    position: relative;
+    display: inline-block;
+    max-width: 400px;
+    padding: 42px;
+    flex-direction: column;
+    align-items: flex-start;
+    border-radius: 30px;
+    background: #ffffff;
+    transition: 1s all;
+    text-decoration: none;
+    border: solid rgb(88, 193, 165) 2px;
+    gap: 2rem;
+    margin-left: 6rem;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+    
+  }
+  .title {
+    color: #072713;
+    text-align: center;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 35.196px;
+    transition: 0.4s all;
+  }
+  .subtitle {
+    color: #7e8882;
+    text-align: center;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+    transition: 0.4s all;
+  }
+  .card:hover {
+    background: #279c7f;
+    transition: 0.4s all;
+  }
+  .card:hover .title,
+  .card:hover .subtitle {
+    color: #fff;
+    transition: 0.4s all;
+  }
+  
+  .btnRound:hover {
+    box-shadow: 0px 6px 10px 0px rgba(35, 197, 94, 0.2);
+    transition: all 0.2s ease;
+  }
+  
+  /* form*/
+  .container {
+    background: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    max-width: 100%;
+    width: 600px;
+    margin-left: 50rem;
+    text-align: center;
+}
+.form-group {
+    margin-bottom: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.form-group label {
+    width: 100%;
+    margin-bottom: 5px;
+    text-align: left;
+    font-size: large;
+    
+    font-family:Arial, Helvetica, sans-serif
+}
+.form-group input, .form-group select, .form-group textarea {
+    width: calc(100% - 20px);
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+.form-group textarea {
+    resize: vertical;
+}
+.form-group input[type="submit"] {
+    background: lightgreen;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    padding: 8px 16px;
+    font-size: 16px;
+}
+.form-group .half-width {
+    width: calc(50% - 10px);
+    margin-right: 10px;
+}
+.form-group .full-width {
+    width: calc(100% - 20px);
+}
+.hidden {
+    display:none;
+}
+
+
+/*payment*/
+.modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: fit-content;
+    height: fit-content;
+    background: #FFFFFF;
+    box-shadow: 0px 187px 75px rgba(0, 0, 0, 0.01), 0px 105px 63px rgba(0, 0, 0, 0.05), 0px 47px 47px rgba(0, 0, 0, 0.09), 0px 12px 26px rgba(0, 0, 0, 0.1), 0px 0px 0px rgba(0, 0, 0, 0.1);
+    border-radius: 26px;
+    max-width: 450px;
+    z-index: 1000;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+}
+
+.payment--options {
+    width: calc(100% - 40px);
+    display: grid;
+    grid-template-columns: 33% 34% 33%;
+    gap: 20px;
+    padding: 10px;
+}
+
+.payment--options button {
+    height: 55px;
+    background: #F2F2F2;
+    border-radius: 11px;
+    padding: 0;
+    border: 0;
+    outline: none;
+}
+
+.payment--options button svg {
+    height: 18px;
+}
+
+.payment--options button:last-child svg {
+    height: 22px;
+}
+
+.separator {
+    width: calc(100% - 20px);
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 10px;
+    color: #8B8E98;
+    margin: 0 10px;
+}
+
+.separator > p {
+    word-break: keep-all;
+    display: block;
+    text-align: center;
+    font-weight: 600;
+    font-size: 11px;
+    margin: auto;
+}
+
+.separator .line {
+    display: inline-block;
+    width: 100%;
+    height: 1px;
+    border: 0;
+    background-color: #e8e8e8;
+    margin: auto;
+}
+
+.credit-card-info--form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.input_container {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.split {
+    display: grid;
+    grid-template-columns: 4fr 2fr;
+    gap: 15px;
+}
+
+.split input {
+    width: 100%;
+}
+
+.input_label {
+    font-size: 10px;
+    color: #8B8E98;
+    font-weight: 600;
+}
+
+.input_field {
+    width: auto;
+    height: 40px;
+    padding: 0 0 0 16px;
+    border-radius: 9px;
+    outline: none;
+    background-color: #F2F2F2;
+    border: 1px solid #e5e5e500;
+    transition: all 0.3s cubic-bezier(0.15, 0.83, 0.66, 1);
+}
+
+.input_field:focus {
+    border: 1px solid transparent;
+    box-shadow: 0px 0px 0px 2px #242424;
+    background-color: transparent;
+}
+
+.purchase--btn {
+    height: 55px;
+    background: #F2F2F2;
+    border-radius: 11px;
+    border: 0;
+    outline: none;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 700;
+    background: linear-gradient(180deg, #363636 0%, #1B1B1B 50%, #000000 100%);
+    box-shadow: 0px 0px 0px 0px #FFFFFF, 0px 0px 0px 0px #000000;
+    transition: all 0.3s cubic-bezier(0.15, 0.83, 0.66, 1);
+}
+
+.purchase--btn:hover {
+    box-shadow: 0px 0px 0px 2px #FFFFFF, 0px 0px 0px 4px #0000003a;
+}
+
+/* Reset input number styles */
+.input_field::-webkit-outer-spin-button,
+.input_field::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.input_field[type=number] {
+    appearance: textfield;
+}
+
+#closePopupBtn {
+    background: none;
+    border: none;
+    color: #000;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}
+
+#overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 500;
+}
+
+footer{
+    background-color: #279c7f;
+    color: #fff;
+    padding: 100px 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 3rem;
+    
+}
+
+footer h3{
+    font-size: 48px;
+}
+
+footer .right{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 26px;
+}
+
+footer .right .links{
+    display: flex;
+    gap: 30px;
+    font-size: large;
+}
+
+footer .right .links a{
+    color: #ffffff;
+    transition: color 0.3s ease;
+}
+
+footer .right .links a:hover{
+    color: #fff;
+}
+
+footer .right .social{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+footer .right .social i{
+    font-size: 30px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    color: #fff;
+}
+
+footer .right .social i:hover{
+    color: #31f1c4;
+}
+
+footer .right p{
+    font-size: 13px;
+    color: #ffffff;
+}
+
+/*file*/
+.cssbuttons-io-button {
+    display: flex;
+    align-items: center;
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 17px;
+    padding: 0.8em 1.5em 0.8em 1.2em;
+    color: white;
+    background: #53ad95;
+    background: linear-gradient(0deg, rgb(79, 212, 179) 0%, rgb(115, 208, 178) 100%);
+    border: none;
+    box-shadow: 0 0.7em 1.5em -0.5em rgb(38, 221, 160);
+    letter-spacing: 0.05em;
+    border-radius: 20em;
+  }
+  
+  .cssbuttons-io-button svg {
+    margin-right: 8px;
+  }
+  
+  .cssbuttons-io-button:hover {
+    box-shadow: 0 0.5em 1.5em -0.5em rgb(64, 234, 203);
+  }
+  
+  .cssbuttons-io-button:active {
+    box-shadow: 0 0.3em 1em -0.5em rgb(88, 201, 180);
+  }
+
+
+
+
+
+

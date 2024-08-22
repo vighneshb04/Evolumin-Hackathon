@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQs</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawsome.com/clifc3d2826.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            padding: 40px;
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6rem;
+        }
+        header {
+      background-color: #ffffff; 
+      color:#2ebe9f; 
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      text-align: center;
+    }
+    
+    header h1 {
+      font-size: 2rem;
+      margin: 0;
+    }
+    
+    header img {
+      width: 200px;
+      
+      margin-right: 10px;
+    }
+
+        .accordion {
+            background-color: #3ac6a7;
+            color: #ffffff;
+            padding: 4px 16px;
+            margin-bottom: 16px;
+            border-radius: 4px;
+            box-shadow: 1px 1px 5px whitesmoke;
+        }
+
+        .question {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .icon {
+            margin-right: 16px;
+            transition: transform 0.2s;
+        }
+
+        .icon.active {
+            transform: rotate (-180deg);
+        }
+
+        .answer {
+            color: rgb(33, 89, 78);
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s;
+
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const accordions = document.querySelectorAll('.accordion');
+
+            accordions.forEach(accordion => {
+                const icon = accordion.querySelector('.icon');
+                const answer = accordion.querySelector('.answer');
+
+                accordion.addEventListener('click', () => {
+                    if (icon.classList.contains('active')) {
+                        icon.classList.remove('active');
+                        answer.style.maxHeight = null;
+                    } else {
+                        icon.classList.add('active');
+                        answer.style.maxHeight = answer.scrollHeight + 'px';
+                    }
+                });
+            });
+        });
+
+    </script>
+
+</head>
+
+<body>
+
+    <header>
+        <img src="images/logo1.png" alt=""> 
+        <h1>FAQs</h1>
+      </header>
+      
+    
+    <div class="accordion">
+        <div class="question">
+            <h4>What services does Raphael Healthcare provide?</h4>
+            <i class="icon fa fa-caret-down"></i>
+        </div>
+
+
+        <div class="answer">
+            <p>Raphael Healthcare provides a range of essential healthcare services tailored for university hostels, including real-time ambulance tracking, secure patient information sharing, isolation alerts for managing infectious diseases, 
+                pharmacy delivery services, and continuous monitoring of medical implants.</p>
+        </div>
+    </div>
+    <div class="accordion">
+        <div class="question">
+            <h4>How does ambulance tracking work on your platform? </h4>
+            <i class="icon fa fa-caret-down"></i>
+        </div>
+        <div class="answer">
+            <p>Our platform uses GPS technology to track ambulances in real-time. This ensures that during emergencies, 
+                we can dispatch the nearest available ambulance to provide timely medical assistance to those in need within university hostels.</p>
+        </div>
+    </div>
+    <div class="accordion">
+        <div class="question">
+            <h4> Is patient information sharing secure?</h4>
+            <i class="icon fa fa-caret-down"></i>
+        </div>
+        <div class="answer">
+            <p>Yes, we prioritize the security and confidentiality of patient information. Our platform employs robust encryption and access control measures to ensure that only authorized healthcare providers and relevant
+                 authorities can access and share patient information as needed for effective medical care.</p>
+        </div>
+    </div>
+    <div class="accordion">
+        <div class="question">
+            <h4>How does real-time monitoring of implantable devices benefit residents?</h4>
+            <i class="icon fa fa-caret-down"></i>
+        </div>
+        <div class="answer">
+            <p> Real-time monitoring allows for continuous tracking of medical implants, providing immediate alerts
+                 and updates in case of anomalies. This proactive approach ensures timely intervention and enhances the overall safety and health management of residents with medical implants.</p>
+        </div>
+    </div>
+    <div class="accordion">
+        <div class="question">
+            <h4>How does pharmacy delivery work through your service?</h4>
+            <i class="icon fa fa-caret-down"></i>
+        </div>
+        <div class="answer">
+            <p> We collaborate with trusted pharmacies to offer convenient medication delivery directly to your doorstep. This service eliminates the need for residents to visit pharmacies, ensuring
+                 timely access to medications and promoting adherence to prescribed treatments.</p>
+        </div>
+    </div>
+    <p>Copyright © 2024 Nexus Forge, All Rights Reserved.</p>
+    
+</body>
+
+</html>
+
+
+</body>
+
+</html>
