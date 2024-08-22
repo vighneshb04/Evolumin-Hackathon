@@ -43,28 +43,10 @@ The University Hostel Healthcare Website is designed to provide comprehensive he
    git clone https://github.com/vighneshb04/Evolumin-Hackathon.git
 Navigate to the project directory:
 
-bash
-Copy code
-cd Evolumin-Hackathon
-Install dependencies:
+1. **Navigate to the project directory:**
+   ```bash
+   cd Evolumin-Hackathon
 
-bash
-Copy code
-npm install
-Set up environment variables:
-Create a .env file in the root directory and add the following:
-
-bash
-Copy code
-MONGODB_URI=your-mongodb-uri
-PORT=3000
-Run the application:
-
-bash
-Copy code
-npm start
-Access the website:
-Open your browser and go to http://localhost:3000
 
 🚀 Usage
 🔐 Admin Panel: Admins can log in to manage website content, including updates on healthcare services, isolation alerts, and patient information.
