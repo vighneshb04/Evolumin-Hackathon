@@ -94,10 +94,10 @@ Please ensure your code follows our coding standards and includes appropriate te
 
 
 
-##📜 License
+## 📜License
 This project is licensed under the GNU License. See the LICENSE file for details.
 
-##📞 Contact
+## 📞Contact
 For any questions or suggestions, please contact:
 
 📧 Email: support@hostelhealthcare.com
