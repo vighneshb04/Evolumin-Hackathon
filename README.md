@@ -75,21 +75,22 @@ Navigate to the project directory:
 We welcome contributions from the community! To contribute, please follow these steps:
 
 Fork the repository
-Create a new branch:
-    
-    ```bash
-    git checkout -b feature/your-feature-name
+# Create a new branch
+git checkout -b feature/your-feature-name
 
-Make your changes and commit them:
-    
-    ```bash
-    git commit -m "Add your message"
-Push to the branch:
+# Make your changes and commit them
+git commit -m "Add your message"
 
-    ```bash
-    git push origin feature/your-feature-name
-Create a pull request
-Please ensure your code follows our coding standards and includes appropriate tests.
+# Push to the branch
+git push origin feature/your-feature-name
+
+# Create a pull request
+# After pushing the branch, go to your repository on GitHub
+# You will see an option to "Compare & pull request" for the branch you just pushed
+# Click on that button and follow the instructions to create a pull request
+
+# Please ensure your code follows the coding standards and includes appropriate tests
+
 
 📜 License
 This project is licensed under the GNU License. See the LICENSE file for details.
