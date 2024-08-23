@@ -70,26 +70,28 @@ Navigate to the project directory:
 
 🔐 Admin Panel: Admins can log in to manage website content, such as updating news, events, and faculty profiles.
 🖥️ User Interaction: Students and parents can browse the website to get information, view the gallery, and contact the school.
-
 ## Contributing
 We welcome contributions from the community! To contribute, please follow these steps:
 
 Fork the repository
-# Create a new branch
-git checkout -b feature/your-feature-name
+Create a new branch:
+    
+    
+    git checkout -b feature/your-feature-name
 
-# Make your changes and commit them
-git commit -m "Add your message"
+Make your changes and commit them:
+    
+    
+    git commit -m "Add your message"
+Push to the branch:
 
-# Push to the branch
-git push origin feature/your-feature-name
+    
+    git push origin feature/your-feature-name
+Create a pull request
 
-# Create a pull request
-# After pushing the branch, go to your repository on GitHub
-# You will see an option to "Compare & pull request" for the branch you just pushed
-# Click on that button and follow the instructions to create a pull request
+Please ensure your code follows our coding standards and includes appropriate tests.
 
-# Please ensure your code follows the coding standards and includes appropriate tests
+
 
 
 📜 License
